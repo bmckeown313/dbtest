@@ -1,0 +1,137 @@
+[
+
+  {
+    "productName": "Almond Toe Court Shoes, Patent Black",
+    "department": "Women's",
+    "category": "Footwear",
+    "price": 99.00,
+    "salePrice": null,
+    "quantityInStock": 5
+  },
+
+  {
+    "productName": "Suede Shoes, Blue",
+    "department": "Women's",
+    "category": "Footwear",
+    "price": 42.00,
+    "salePrice": null,
+    "quantityInStock": 4
+  },
+
+  {
+    "productName": "Leather Driver Saddle Loafers, Tan",
+    "department": "Men's",
+    "category": "Footwear",
+    "price": 34.00,
+    "salePrice": null,
+    "quantityInStock": 12
+  },
+
+  {
+    "productName": "Flip Flops, Red",
+    "department": "Men's",
+    "category": "Footwear",
+    "price": 19.00,
+    "salePrice": null,
+    "quantityInStock": 6
+  },
+
+  {
+    "productName": "Flip Flops, Blue",
+    "department": "Men's",
+    "category": "Footwear",
+    "price": 19.00,
+    "salePrice": null,
+    "quantityInStock": 0
+  },
+
+  {
+    "productName": "Gold Button Cardigan, Black",
+    "department": "Women's",
+    "category": "Casualwear",
+    "price": 167.00,
+    "salePrice": null,
+    "quantityInStock": 6
+  },
+
+  {
+    "productName": "Cotton Shorts, Medium Red",
+    "department": "Women's",
+    "category": "Casualwear",
+    "price": 30.00,
+    "salePrice": null,
+    "quantityInStock": 5
+  },
+
+  {
+    "productName": "Fine Stripe Short Sleeve Shirt, Grey",
+    "department": "Men's",
+    "category": "Casualwear",
+    "price": 49.99,
+    "salePrice": null,
+    "quantityInStock": 9
+  },
+
+  {
+    "productName": "Fine Stripe Short Sleeve Shirt, Green",
+    "department": "Men's",
+    "category": "Casualwear",
+    "price": 49.99,
+    "salePrice": 39.99,
+    "quantityInStock": 3
+  },
+
+  {
+    "productName": "Sharkskin Waistcoat, Charcoal",
+    "department": "Men's",
+    "category": "Formalwear",
+    "price": 75.00,
+    "salePrice": null,
+    "quantityInStock": 2
+  },
+
+  {
+    "productName": "Lightweight Patch Pocket Blazer, Deer",
+    "department": "Men's",
+    "category": "Formalwear",
+    "price": 175.50,
+    "salePrice": null,
+    "quantityInStock": 1
+  },
+
+  {
+    "productName": "Bird Print Dress, Black",
+    "department": "Women's",
+    "category": "Formalwear",
+    "price": 270.00,
+    "salePrice": null,
+    "quantityInStock": 10
+  },
+
+  {
+    "productName": "Mid Twist Cut-Out Dress, Pink",
+    "department": "Women's",
+    "category": "Formalwear",
+    "price": 540.00,
+    "salePrice": null,
+    "quantityInStock": 5
+  }
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

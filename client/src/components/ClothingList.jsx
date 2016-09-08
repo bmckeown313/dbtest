@@ -6,7 +6,16 @@ var ClothingList = React.createClass({
   render: function(){
 
     var clothingProductNodes = this.props.products.map(function(product, key){
-      return <ClothingProduct key={key} productName={product.productName} department={product.department} category={product.category} price={product.price} quantityInStock={product.quantityInStock}/>
+      return <ClothingProduct
+      key={key}
+      product={product}
+      productName={product.productName}
+      department={product.department}
+      category={product.category}
+      price={product.price}
+      quantityInStock={product.quantityInStock}
+      imageUrl={product.imageUrl}
+      />
     })
 
     return(

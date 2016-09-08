@@ -7,7 +7,11 @@ var Basket = require('./Basket');
 var ClothingBox = React.createClass({
 
   getInitialState: function(){
-    return({products: []});
+    return({products: [], selectedProduct: null});
+  },
+
+  setSelectedProduct: function(product){
+    this.setState({selectedProduct: product});
   },
 
   componentDidMount: function(){
@@ -26,11 +30,11 @@ var ClothingBox = React.createClass({
   render: function(){
     return(
       <div>
-        <h1>The clothing box</h1>
+        <h1 className="main-heading">t.r.o.v.e</h1>
         <Basket products={this.state.products}/>
         <BasketButton />
         <ClothingSelect products={this.state.products}/>
-        <ClothingList products={this.state.products}/>
+        <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct}/>
       </div>
     )
   }

@@ -19765,7 +19765,11 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { products: [] };
+	    return { products: [], selectedProduct: null };
+	  },
+	
+	  setSelectedProduct: function setSelectedProduct(product) {
+	    this.setState({ selectedProduct: product });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19787,13 +19791,13 @@
 	      null,
 	      React.createElement(
 	        'h1',
-	        null,
-	        'The clothing box'
+	        { className: 'main-heading' },
+	        't.r.o.v.e'
 	      ),
 	      React.createElement(Basket, { products: this.state.products }),
 	      React.createElement(BasketButton, null),
 	      React.createElement(ClothingSelect, { products: this.state.products }),
-	      React.createElement(ClothingList, { products: this.state.products })
+	      React.createElement(ClothingList, { products: this.state.products, setSelectedProduct: this.setSelectedProduct })
 	    );
 	  }
 	
@@ -19818,11 +19822,50 @@
 	      'div',
 	      null,
 	      React.createElement(
-	        'h1',
+	        'select',
 	        null,
-	        'The clothing select'
+	        React.createElement(
+	          'option',
+	          { selected: true, disabled: true },
+	          'select clothing category'
+	        ),
+	        React.createElement(
+	          'option',
+	          null,
+	          'footwear'
+	        ),
+	        React.createElement(
+	          'option',
+	          null,
+	          'casualwear'
+	        ),
+	        React.createElement(
+	          'option',
+	          null,
+	          'formalwear'
+	        )
 	      ),
-	      React.createElement('select', null)
+	      React.createElement('br', null),
+	      React.createElement('br', null),
+	      React.createElement(
+	        'select',
+	        null,
+	        React.createElement(
+	          'option',
+	          { selected: true, disabled: true },
+	          'select department'
+	        ),
+	        React.createElement(
+	          'option',
+	          null,
+	          'Menswear'
+	        ),
+	        React.createElement(
+	          'option',
+	          null,
+	          'Womenswear'
+	        )
+	      )
 	    );
 	  }
 	
@@ -19846,7 +19889,16 @@
 	  render: function render() {
 	
 	    var clothingProductNodes = this.props.products.map(function (product, key) {
-	      return React.createElement(ClothingProduct, { key: key, productName: product.productName, department: product.department, category: product.category, price: product.price, quantityInStock: product.quantityInStock });
+	      return React.createElement(ClothingProduct, {
+	        key: key,
+	        product: product,
+	        productName: product.productName,
+	        department: product.department,
+	        category: product.category,
+	        price: product.price,
+	        quantityInStock: product.quantityInStock,
+	        imageUrl: product.imageUrl
+	      });
 	    });
 	
 	    return React.createElement(
@@ -19888,6 +19940,8 @@
 	      React.createElement(
 	        'li',
 	        { key: this.props.key },
+	        React.createElement('img', { src: this.props.imageUrl }),
+	        ' |',
 	        this.props.productName,
 	        ' | ',
 	        this.props.department,

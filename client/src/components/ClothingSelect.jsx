@@ -5,8 +5,20 @@ var ClothingSelect = React.createClass({
   render: function(){
     return(
       <div>
-        <h1>The clothing select</h1>
-        <select></select>
+ 
+        <select>
+          <option selected disabled>select clothing category</option>
+          <option>footwear</option>
+          <option>casualwear</option>
+          <option>formalwear</option>
+        </select>
+        <br></br><br></br>
+        <select>
+          <option selected disabled>select department</option>
+          <option>Menswear</option>
+          <option>Womenswear</option>
+        </select>
+
       </div>
     )
   }

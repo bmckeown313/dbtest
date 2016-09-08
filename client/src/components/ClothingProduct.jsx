@@ -6,6 +6,7 @@ var ClothingProduct = React.createClass({
     return(
       <div>
         <li key={this.props.key}>
+        <img src={this.props.imageUrl}></img> |
           {this.props.productName} | {this.props.department} | {this.props.category} | £{this.props.price} | {this.props.quantityInStock}
           <button>add to cart</button>
         </li>

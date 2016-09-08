@@ -6,7 +6,8 @@
     "category": "Footwear",
     "price": 99.00,
     "salePrice": null,
-    "quantityInStock": 5
+    "quantityInStock": 5,
+    "imageUrl": "http://images.asos-media.com/inv/media/6/1/3/4/6674316/black/image1xl.jpg"
   },
 
   {
@@ -15,7 +16,8 @@
     "category": "Footwear",
     "price": 42.00,
     "salePrice": null,
-    "quantityInStock": 4
+    "quantityInStock": 4,
+    "imageUrl": "http://images.asos-media.com/inv/media/7/7/0/2/6782077/bluesuede/image1xxl.jpg"
   },
 
   {
@@ -24,7 +26,8 @@
     "category": "Footwear",
     "price": 34.00,
     "salePrice": null,
-    "quantityInStock": 12
+    "quantityInStock": 12,
+    "imageUrl": "http://images.asos-media.com/inv/media/9/1/0/5/6305019/tan/image1xxl.jpg"
   },
 
   {
@@ -33,7 +36,8 @@
     "category": "Footwear",
     "price": 19.00,
     "salePrice": null,
-    "quantityInStock": 6
+    "quantityInStock": 6,
+    "imageUrl": "http://images.asos-media.com/inv/media/8/6/7/7/6287768/red/image1xxl.jpg"
   },
 
   {
@@ -42,7 +46,8 @@
     "category": "Footwear",
     "price": 19.00,
     "salePrice": null,
-    "quantityInStock": 0
+    "quantityInStock": 0,
+    "imageUrl": "http://images.asos-media.com/inv/media/3/3/3/9/6689333/blue/image1xxl.jpg"
   },
 
   {
@@ -51,7 +56,8 @@
     "category": "Casualwear",
     "price": 167.00,
     "salePrice": null,
-    "quantityInStock": 6
+    "quantityInStock": 6,
+    "imageUrl": "http://images.asos-media.com/inv/media/8/9/0/0/7100098/black/image1xxl.jpg"
   },
 
   {
@@ -60,7 +66,8 @@
     "category": "Casualwear",
     "price": 30.00,
     "salePrice": null,
-    "quantityInStock": 5
+    "quantityInStock": 5,
+    "imageUrl": "http://images.asos-media.com/inv/media/2/3/5/2/5302532/image4xxl.jpg"
   },
 
   {
@@ -69,7 +76,8 @@
     "category": "Casualwear",
     "price": 49.99,
     "salePrice": null,
-    "quantityInStock": 9
+    "quantityInStock": 9,
+    "imageUrl": "http://images.asos-media.com/inv/media/9/0/5/7/6507509/image3xxl.jpg"
   },
 
   {
@@ -78,7 +86,8 @@
     "category": "Casualwear",
     "price": 49.99,
     "salePrice": 39.99,
-    "quantityInStock": 3
+    "quantityInStock": 3,
+    "imageUrl": "http://images.asos-media.com/inv/media/4/7/9/0/6080974/image3xxl.jpg"
   },
 
   {
@@ -87,7 +96,8 @@
     "category": "Formalwear",
     "price": 75.00,
     "salePrice": null,
-    "quantityInStock": 2
+    "quantityInStock": 2,
+    "imageUrl": "http://images.asos-media.com/inv/media/8/6/5/9/6719568/image4xxl.jpg"
   },
 
   {
@@ -96,7 +106,8 @@
     "category": "Formalwear",
     "price": 175.50,
     "salePrice": null,
-    "quantityInStock": 1
+    "quantityInStock": 1,
+    "imageUrl": "http://images.asos-media.com/inv/media/7/0/8/1/6701807/brown/image1xxl.jpg"
   },
 
   {
@@ -105,7 +116,8 @@
     "category": "Formalwear",
     "price": 270.00,
     "salePrice": null,
-    "quantityInStock": 10
+    "quantityInStock": 10,
+    "imageUrl": "http://images.asos-media.com/inv/media/4/8/3/4/6764384/black/image1xxl.jpg"
   },
 
   {
@@ -114,17 +126,11 @@
     "category": "Formalwear",
     "price": 540.00,
     "salePrice": null,
-    "quantityInStock": 5
+    "quantityInStock": 5,
+    "imageUrl": "http://images.asos-media.com/inv/media/7/7/7/5/5875777/nude/image1xxl.jpg"
   }
 
 ]
-
-
-
-
-
-
-
 
 
 

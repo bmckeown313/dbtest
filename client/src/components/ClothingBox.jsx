@@ -5,6 +5,7 @@ var BasketButton = require('./BasketButton');
 var Basket = require('./Basket');
 var ShoppingBasket = require('../models/shopping_basket');
 var Product = require('../models/product');
+var Transaction = require('../models/transaction');
 
 var ClothingBox = React.createClass({
 
@@ -18,12 +19,24 @@ var ClothingBox = React.createClass({
 
   addProductToBasket: function(selectedProduct){
     var shoppingBasket = new ShoppingBasket();
+
     for(var product of this.state.shoppingBasket){
       shoppingBasket.addProduct(new Product(product));
     }
     shoppingBasket.addProduct(selectedProduct);
-    console.log(shoppingBasket);
     this.setState({shoppingBasket: shoppingBasket.basket});
+  },
+
+  removeProductFromBasket: function(selectedProduct){
+    var shoppingBasket = new ShoppingBasket();
+
+    for(var product of this.state.shoppingBasket){
+      shoppingBasket.addProduct(new Product(product));
+    }
+
+    shoppingBasket.removeProduct(selectedProduct);
+    this.setState({shoppingBasket: shoppingBasket.basket});
+
   },
 
   componentDidMount: function(){
@@ -46,7 +59,7 @@ var ClothingBox = React.createClass({
         <Basket products={this.state.products}/>
         <BasketButton />
         <ClothingSelect products={this.state.products}/>
-        <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct} addProductToBasket={this.addProductToBasket}/>
+        <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct} addProductToBasket={this.addProductToBasket} removeProductFromBasket={this.removeProductFromBasket}/>
       </div>
     )
   }

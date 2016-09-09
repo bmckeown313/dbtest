@@ -3,8 +3,9 @@ var Product = require('../models/product');
 
 var ClothingProduct = React.createClass({
 
-  handleClick: function(){
+  handleAddClick: function(){
     var selectedProduct = new Product({
+      "id": this.props.id,
       "productName": this.props.productName,
       "colour": this.props.colour,
       "department": this.props.department,
@@ -13,9 +14,21 @@ var ClothingProduct = React.createClass({
       "salePrice": this.props.salePrice,
       "quantityInStock": this.props.quantityInStock
     });
-
     this.props.addProductToBasket(selectedProduct);
+  },
 
+  handleRemoveClick: function(){
+    var selectedProduct = new Product({
+      "id": this.props.id,
+      "productName": this.props.productName,
+      "colour": this.props.colour,
+      "department": this.props.department,
+      "category": this.props.category,
+      "price": this.props.price,
+      "salePrice": this.props.salePrice,
+      "quantityInStock": this.props.quantityInStock
+    });
+    this.props.removeProductFromBasket(selectedProduct);
   },
 
   render: function(){
@@ -23,7 +36,7 @@ var ClothingProduct = React.createClass({
       <div>
         <li key={this.props.key}>
         <img src={this.props.imageUrl}></img> | 
-          {this.props.productName} | {this.props.colour} | {this.props.department} | {this.props.category} | £{this.props.price} | {this.props.quantityInStock} | <button onClick={this.handleClick}>add to cart</button>
+          {this.props.productName} | {this.props.colour} | {this.props.department} | {this.props.category} | £{this.props.price} | {this.props.quantityInStock} | <button className="add-product-button" onClick={this.handleAddClick}>add to cart</button> | <button className="remove-product-button" onClick={this.handleRemoveClick}>remove from cart</button>
         </li>
       </div>
     )

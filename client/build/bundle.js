@@ -19761,6 +19761,7 @@
 	var Basket = __webpack_require__(164);
 	var ShoppingBasket = __webpack_require__(165);
 	var Product = __webpack_require__(168);
+	var Transaction = __webpack_require__(169);
 	
 	var ClothingBox = React.createClass({
 	  displayName: 'ClothingBox',
@@ -19776,6 +19777,7 @@
 	
 	  addProductToBasket: function addProductToBasket(selectedProduct) {
 	    var shoppingBasket = new ShoppingBasket();
+	
 	    var _iteratorNormalCompletion = true;
 	    var _didIteratorError = false;
 	    var _iteratorError = undefined;
@@ -19802,7 +19804,38 @@
 	    }
 	
 	    shoppingBasket.addProduct(selectedProduct);
-	    console.log(shoppingBasket);
+	    this.setState({ shoppingBasket: shoppingBasket.basket });
+	  },
+	
+	  removeProductFromBasket: function removeProductFromBasket(selectedProduct) {
+	    var shoppingBasket = new ShoppingBasket();
+	
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+	
+	    try {
+	      for (var _iterator2 = this.state.shoppingBasket[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	        var product = _step2.value;
+	
+	        shoppingBasket.addProduct(new Product(product));
+	      }
+	    } catch (err) {
+	      _didIteratorError2 = true;
+	      _iteratorError2 = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	          _iterator2.return();
+	        }
+	      } finally {
+	        if (_didIteratorError2) {
+	          throw _iteratorError2;
+	        }
+	      }
+	    }
+	
+	    shoppingBasket.removeProduct(selectedProduct);
 	    this.setState({ shoppingBasket: shoppingBasket.basket });
 	  },
 	
@@ -19831,7 +19864,7 @@
 	      React.createElement(Basket, { products: this.state.products }),
 	      React.createElement(BasketButton, null),
 	      React.createElement(ClothingSelect, { products: this.state.products }),
-	      React.createElement(ClothingList, { products: this.state.products, setSelectedProduct: this.setSelectedProduct, addProductToBasket: this.addProductToBasket })
+	      React.createElement(ClothingList, { products: this.state.products, setSelectedProduct: this.setSelectedProduct, addProductToBasket: this.addProductToBasket, removeProductFromBasket: this.removeProductFromBasket })
 	    );
 	  }
 	
@@ -19891,6 +19924,7 @@
 	      return React.createElement(ClothingProduct, {
 	        key: key,
 	        product: product,
+	        id: product.id,
 	        productName: product.productName,
 	        colour: product.colour,
 	        department: product.department,
@@ -19898,7 +19932,8 @@
 	        price: product.price,
 	        quantityInStock: product.quantityInStock,
 	        imageUrl: product.imageUrl,
-	        addProductToBasket: this.props.addProductToBasket
+	        addProductToBasket: this.props.addProductToBasket,
+	        removeProductFromBasket: this.props.removeProductFromBasket
 	      });
 	    }.bind(this));
 	
@@ -19935,8 +19970,9 @@
 	  displayName: 'ClothingProduct',
 	
 	
-	  handleClick: function handleClick() {
+	  handleAddClick: function handleAddClick() {
 	    var selectedProduct = new Product({
+	      "id": this.props.id,
 	      "productName": this.props.productName,
 	      "colour": this.props.colour,
 	      "department": this.props.department,
@@ -19945,8 +19981,21 @@
 	      "salePrice": this.props.salePrice,
 	      "quantityInStock": this.props.quantityInStock
 	    });
-	
 	    this.props.addProductToBasket(selectedProduct);
+	  },
+	
+	  handleRemoveClick: function handleRemoveClick() {
+	    var selectedProduct = new Product({
+	      "id": this.props.id,
+	      "productName": this.props.productName,
+	      "colour": this.props.colour,
+	      "department": this.props.department,
+	      "category": this.props.category,
+	      "price": this.props.price,
+	      "salePrice": this.props.salePrice,
+	      "quantityInStock": this.props.quantityInStock
+	    });
+	    this.props.removeProductFromBasket(selectedProduct);
 	  },
 	
 	  render: function render() {
@@ -19972,8 +20021,14 @@
 	        ' | ',
 	        React.createElement(
 	          'button',
-	          { onClick: this.handleClick },
+	          { className: 'add-product-button', onClick: this.handleAddClick },
 	          'add to cart'
+	        ),
+	        ' | ',
+	        React.createElement(
+	          'button',
+	          { className: 'remove-product-button', onClick: this.handleRemoveClick },
+	          'remove from cart'
 	        )
 	      )
 	    );
@@ -20044,7 +20099,7 @@
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var _ = __webpack_require__(166);
 	
@@ -20068,10 +20123,18 @@
 	    this.basket.push(product);
 	  },
 	
-	  removeProduct: function removeProduct(product) {
-	    var index = this.basket.indexOf(product);
-	    this.basket.splice(index, 1);
-	    this.value -= product.price;
+	  removeProduct: function removeProduct(removedProduct) {
+	    for (var i = 0; i < this.basket.length; i++) {
+	      if (this.basket[i].id === removedProduct.id) {
+	        this.basket.splice(i, 1);
+	        console.log("index", i);
+	      }
+	    }
+	    if (removedProduct.salePrice) {
+	      this.value += removedProduct.salePrice;
+	    } else {
+	      this.value += removedProduct.price;
+	    };
 	  },
 	
 	  emptyBasket: function emptyBasket() {
@@ -36869,6 +36932,7 @@
 	"use strict";
 	
 	var Product = function Product(params) {
+	  this.id = params.id;
 	  this.productName = params.productName;
 	  this.colour = params.colour;
 	  this.department = params.department;
@@ -36880,6 +36944,38 @@
 	};
 	
 	module.exports = Product;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _ = __webpack_require__(166);
+	
+	var Transaction = function Transaction(params) {
+	  this.shoppingBasket = params.shoppingBasket;
+	  this.stock = params.stock;
+	};
+	
+	Transaction.prototype = {
+	
+	  moveProductFromStockToBasket: function moveProductFromStockToBasket(product, quantity) {
+	    if (this.stock.checkIfItemInStock(product, quantity)) {
+	      this.shoppingBasket.addProduct(product);
+	      this.stock.removeItemFromStock(product, quantity);
+	    }
+	  }
+	
+	};
+	
+	module.exports = Transaction;
+	
+	// additional methods to add:
+	
+	// returnProductsFromBasketToStock: function(product, quantity){
+	//   if(this.shoppingBasket)
+	// }
 
 /***/ }
 /******/ ]);

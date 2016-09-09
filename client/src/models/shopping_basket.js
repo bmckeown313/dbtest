@@ -20,10 +20,18 @@ ShoppingBasket.prototype = {
     this.basket.push(product);
   },
 
-  removeProduct: function(product){
-    var index = this.basket.indexOf(product);
-    this.basket.splice(index, 1);
-    this.value -= product.price;
+  removeProduct: function(removedProduct){
+    for(var i = 0; i < this.basket.length; i++){
+      if(this.basket[i].id === removedProduct.id){
+        this.basket.splice(i, 1)
+        console.log("index", i);
+      }
+    }
+    if(removedProduct.salePrice){
+      this.value += removedProduct.salePrice
+    } else {
+      this.value += removedProduct.price
+    };
   },
 
   emptyBasket: function(){

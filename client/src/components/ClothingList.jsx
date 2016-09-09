@@ -9,6 +9,7 @@ var ClothingList = React.createClass({
       return <ClothingProduct
       key={key}
       product={product}
+      id={product.id}
       productName={product.productName}
       colour={product.colour}
       department={product.department}
@@ -17,6 +18,7 @@ var ClothingList = React.createClass({
       quantityInStock={product.quantityInStock}
       imageUrl={product.imageUrl}
       addProductToBasket={this.props.addProductToBasket}
+      removeProductFromBasket={this.props.removeProductFromBasket}
       />
     }.bind(this))
 

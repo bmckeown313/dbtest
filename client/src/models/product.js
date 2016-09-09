@@ -1,4 +1,5 @@
 var Product = function(params){
+  this.id = params.id;
   this.productName = params.productName;
   this.colour = params.colour;
   this.department = params.department;

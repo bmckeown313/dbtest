@@ -1,12 +1,16 @@
 var React = require('react');
+
 var ClothingSelect = require('./ClothingSelect');
 var ClothingList = require('./ClothingList');
 var BasketButton = require('./BasketButton');
 var Basket = require('./Basket');
+
 var ShoppingBasket = require('../models/shopping_basket');
 var Product = require('../models/product');
 var Transaction = require('../models/transaction');
 var DiscountVoucher = require('../models/discount_voucher');
+var Stock = require('../models/stock');
+
 var ClothingBox = React.createClass({
 
   getInitialState: function(){
@@ -19,8 +23,21 @@ var ClothingBox = React.createClass({
     for(var product of this.state.shoppingBasket){
       shoppingBasket.addProduct(new Product(product));
     }
-    shoppingBasket.addProduct(selectedProduct);
-    console.log("basket value in add product", shoppingBasket.value);
+
+    var stock = new Stock();
+
+    for(var product of this.state.products){
+      stock.addProduct(new Product(product));
+    }
+
+    console.log("stock pre transaction:", stock);
+
+    var transaction = new Transaction({"shoppingBasket": shoppingBasket, "stock": stock});
+
+    transaction.moveProductFromStockToBasket(selectedProduct, 1);
+
+    console.log("basket post transaction move:", shoppingBasket.basket)
+
     this.setState({shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value});
   },
 

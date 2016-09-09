@@ -10,10 +10,21 @@ Stock.prototype = {
     this.stock.push(product);
   },
 
+
+  checkSpecialItemPresent: function(voucher){
+    var matchedItems = [];
+    _.forEach(voucher.specialItems, function(specialItem){
+      matchedItems = _.filter(this.basket, _.matches(specialItem));
+    }.bind(this));
+      matchedItems = _.uniq(matchedItems);
+    return (matchedItems.length === voucher.specialItems.length);
+  },
+
+
   checkIfItemInStock: function(item, quantity){
     var inStock = false;
     _.forEach(this.stock, function(product){
-      if(product.name === item.name && product.quantityInStock >= quantity){
+      if(product.productName === item.productName && product.quantityInStock >= quantity){
         inStock = true;
       }
     })
@@ -40,19 +51,41 @@ Stock.prototype = {
     return total;
   },
 
-  removeItemFromStock: function(item, quantity){
-    if(this.checkIfItemInStock(item, quantity)){
-      var index = this.stock.indexOf(item);
-      this.stock[index].quantityInStock -= quantity;
-    };
+  removeItemFromStock: function(removedItem, quantity){
+    for(var i = 0; i < this.stock.length; i++){
+      if(this.stock[i].id === removedItem.id){
+        this.stock[i].quantityInStock -= quantity;
+      }
+    }
+
+
+    // if(this.checkIfItemInStock(removedItem, quantity)){
+    //   var index = this.stock.indexOf(removedItem);
+    //   this.stock[index].quantityInStock -= quantity;
+    // };
   },
 
-  removeProductFromStock: function(product, quantity){
-    if(this.checkIfItemInStock(product, quantity)){
-      var index = this.stock.indexOf(product);
-      this.stock.splice(index, 1);
-    };
-  },
+
+  // removeProduct: function(removedProduct){
+  //   for(var i = 0; i < this.basket.length; i++){
+  //     if(this.basket[i].id === removedProduct.id){
+  //       this.basket.splice(i, 1)
+  //       console.log("index", i);
+  //     }
+  //   }
+  //   if(removedProduct.salePrice){
+  //     this.value -= removedProduct.salePrice
+  //   } else {
+  //     this.value -= removedProduct.price
+  //   };
+  // },
+
+  // removeProductFromStock: function(product, quantity){
+  //   if(this.checkIfItemInStock(product, quantity)){
+  //     var index = this.stock.indexOf(product);
+  //     this.stock.splice(index, 1);
+  //   };
+  // },
 
   filterProductsByCategory(category){
     return _.filter(this.stock, function(product){

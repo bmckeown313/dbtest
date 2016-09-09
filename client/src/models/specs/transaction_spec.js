@@ -17,21 +17,27 @@ beforeEach(function(){
   });
 
   product2 = new Product({
-    "productName": "Flip Flops, Blue",
+    "id": 4,
+    "productName": "Flip flops",
+    "colour": "Blue",
     "department": "Men's",
     "category": "Footwear",
     "price": 19.00,
     "salePrice": null,
-    "quantityInStock": 0
+    "quantityInStock": 0,
+    "imageUrl": "http://images.asos-media.com/inv/media/3/3/3/9/6689333/blue/image1xxl.jpg"
   });
 
   product3 = new Product({
-    "productName": "Fine Stripe Short Sleeve Shirt, Grey",
+    "id": 7,
+    "productName": "Fine stripe short sleeve shirt",
+    "colour": "Grey",
     "department": "Men's",
     "category": "Casualwear",
     "price": 49.99,
     "salePrice": null,
-    "quantityInStock": 9
+    "quantityInStock": 9,
+    "imageUrl": "http://images.asos-media.com/inv/media/9/0/5/7/6507509/image3xxl.jpg"
   });
 
 });

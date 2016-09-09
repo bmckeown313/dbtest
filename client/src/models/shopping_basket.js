@@ -21,17 +21,19 @@ ShoppingBasket.prototype = {
   },
 
   removeProduct: function(removedProduct){
-    for(var i = 0; i < this.basket.length; i++){
-      if(this.basket[i].id === removedProduct.id){
-        this.basket.splice(i, 1)
-        console.log("index", i);
+    if(this.value > 0){
+      for(var i = 0; i < this.basket.length; i++){
+        if(this.basket[i].id === removedProduct.id){
+          this.basket.splice(i, 1)
+          console.log("index", i);
+        }
       }
+      if(removedProduct.salePrice){
+        this.value -= removedProduct.salePrice
+      } else {
+        this.value -= removedProduct.price
+      };
     }
-    if(removedProduct.salePrice){
-      this.value -= removedProduct.salePrice
-    } else {
-      this.value -= removedProduct.price
-    };
   },
 
   emptyBasket: function(){

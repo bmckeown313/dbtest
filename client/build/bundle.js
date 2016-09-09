@@ -19755,14 +19755,18 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	
 	var ClothingSelect = __webpack_require__(160);
 	var ClothingList = __webpack_require__(161);
 	var BasketButton = __webpack_require__(163);
 	var Basket = __webpack_require__(164);
+	
 	var ShoppingBasket = __webpack_require__(165);
 	var Product = __webpack_require__(168);
 	var Transaction = __webpack_require__(169);
 	var DiscountVoucher = __webpack_require__(171);
+	var Stock = __webpack_require__(173);
+	
 	var ClothingBox = React.createClass({
 	  displayName: 'ClothingBox',
 	
@@ -19799,23 +19803,17 @@
 	      }
 	    }
 	
-	    shoppingBasket.addProduct(selectedProduct);
-	    console.log("basket value in add product", shoppingBasket.value);
-	    this.setState({ shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value });
-	  },
-	
-	  removeProductFromBasket: function removeProductFromBasket(selectedProduct) {
-	    var shoppingBasket = new ShoppingBasket();
+	    var stock = new Stock();
 	
 	    var _iteratorNormalCompletion2 = true;
 	    var _didIteratorError2 = false;
 	    var _iteratorError2 = undefined;
 	
 	    try {
-	      for (var _iterator2 = this.state.shoppingBasket[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	      for (var _iterator2 = this.state.products[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
 	        var product = _step2.value;
 	
-	        shoppingBasket.addProduct(new Product(product));
+	        stock.addProduct(new Product(product));
 	      }
 	    } catch (err) {
 	      _didIteratorError2 = true;
@@ -19832,12 +19830,18 @@
 	      }
 	    }
 	
-	    shoppingBasket.removeProduct(selectedProduct);
-	    console.log("basket value in remove product", shoppingBasket.value);
+	    console.log("stock pre transaction:", stock);
+	
+	    var transaction = new Transaction({ "shoppingBasket": shoppingBasket, "stock": stock });
+	
+	    transaction.moveProductFromStockToBasket(selectedProduct, 1);
+	
+	    console.log("basket post transaction move:", shoppingBasket.basket);
+	
 	    this.setState({ shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value });
 	  },
 	
-	  totalBasketValue: function totalBasketValue() {
+	  removeProductFromBasket: function removeProductFromBasket(selectedProduct) {
 	    var shoppingBasket = new ShoppingBasket();
 	
 	    var _iteratorNormalCompletion3 = true;
@@ -19865,10 +19869,12 @@
 	      }
 	    }
 	
-	    return shoppingBasket.value;
+	    shoppingBasket.removeProduct(selectedProduct);
+	    console.log("basket value in remove product", shoppingBasket.value);
+	    this.setState({ shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value });
 	  },
 	
-	  totalItemsInBasket: function totalItemsInBasket() {
+	  totalBasketValue: function totalBasketValue() {
 	    var shoppingBasket = new ShoppingBasket();
 	
 	    var _iteratorNormalCompletion4 = true;
@@ -19896,10 +19902,10 @@
 	      }
 	    }
 	
-	    return shoppingBasket.numberOfProducts();
+	    return shoppingBasket.value;
 	  },
 	
-	  checkForAvailableVouchers: function checkForAvailableVouchers() {
+	  totalItemsInBasket: function totalItemsInBasket() {
 	    var shoppingBasket = new ShoppingBasket();
 	
 	    var _iteratorNormalCompletion5 = true;
@@ -19927,6 +19933,37 @@
 	      }
 	    }
 	
+	    return shoppingBasket.numberOfProducts();
+	  },
+	
+	  checkForAvailableVouchers: function checkForAvailableVouchers() {
+	    var shoppingBasket = new ShoppingBasket();
+	
+	    var _iteratorNormalCompletion6 = true;
+	    var _didIteratorError6 = false;
+	    var _iteratorError6 = undefined;
+	
+	    try {
+	      for (var _iterator6 = this.state.shoppingBasket[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+	        var product = _step6.value;
+	
+	        shoppingBasket.addProduct(new Product(product));
+	      }
+	    } catch (err) {
+	      _didIteratorError6 = true;
+	      _iteratorError6 = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion6 && _iterator6.return) {
+	          _iterator6.return();
+	        }
+	      } finally {
+	        if (_didIteratorError6) {
+	          throw _iteratorError6;
+	        }
+	      }
+	    }
+	
 	    var fivePoundVoucher = new DiscountVoucher({
 	      "description": "£5.00 off your order",
 	      "discountValue": 5, "eligibleValue": 5,
@@ -19950,47 +19987,17 @@
 	    var availableVouchers = [fivePoundVoucher, tenPoundVoucher, fifteenPoundVoucher];
 	    var eligibleVouchers = [];
 	
-	    var _iteratorNormalCompletion6 = true;
-	    var _didIteratorError6 = false;
-	    var _iteratorError6 = undefined;
-	
-	    try {
-	      for (var _iterator6 = availableVouchers[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-	        var voucher = _step6.value;
-	
-	        if (shoppingBasket.checkEligibleForDiscountVoucher(voucher)) {
-	          eligibleVouchers.push(voucher);
-	        }
-	      }
-	    } catch (err) {
-	      _didIteratorError6 = true;
-	      _iteratorError6 = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion6 && _iterator6.return) {
-	          _iterator6.return();
-	        }
-	      } finally {
-	        if (_didIteratorError6) {
-	          throw _iteratorError6;
-	        }
-	      }
-	    }
-	
-	    return eligibleVouchers;
-	  },
-	
-	  applyAvailableVoucher: function applyAvailableVoucher(availableVoucher) {
-	    var shoppingBasket = new ShoppingBasket();
 	    var _iteratorNormalCompletion7 = true;
 	    var _didIteratorError7 = false;
 	    var _iteratorError7 = undefined;
 	
 	    try {
-	      for (var _iterator7 = this.state.shoppingBasket[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-	        var product = _step7.value;
+	      for (var _iterator7 = availableVouchers[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+	        var voucher = _step7.value;
 	
-	        shoppingBasket.addProduct(new Product(product));
+	        if (shoppingBasket.checkEligibleForDiscountVoucher(voucher)) {
+	          eligibleVouchers.push(voucher);
+	        }
 	      }
 	    } catch (err) {
 	      _didIteratorError7 = true;
@@ -20003,6 +20010,36 @@
 	      } finally {
 	        if (_didIteratorError7) {
 	          throw _iteratorError7;
+	        }
+	      }
+	    }
+	
+	    return eligibleVouchers;
+	  },
+	
+	  applyAvailableVoucher: function applyAvailableVoucher(availableVoucher) {
+	    var shoppingBasket = new ShoppingBasket();
+	    var _iteratorNormalCompletion8 = true;
+	    var _didIteratorError8 = false;
+	    var _iteratorError8 = undefined;
+	
+	    try {
+	      for (var _iterator8 = this.state.shoppingBasket[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+	        var product = _step8.value;
+	
+	        shoppingBasket.addProduct(new Product(product));
+	      }
+	    } catch (err) {
+	      _didIteratorError8 = true;
+	      _iteratorError8 = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion8 && _iterator8.return) {
+	          _iterator8.return();
+	        }
+	      } finally {
+	        if (_didIteratorError8) {
+	          throw _iteratorError8;
 	        }
 	      }
 	    }
@@ -20297,29 +20334,6 @@
 	});
 	
 	module.exports = Basket;
-	
-	// addProductToBasket: function(selectedProduct){
-	//   var shoppingBasket = new ShoppingBasket();
-	
-	//   for(var product of this.state.shoppingBasket){
-	//     shoppingBasket.addProduct(new Product(product));
-	//   }
-	
-	//   this.setState({shoppingBasket: shoppingBasket.basket});
-	
-	//   var stock = new Stock();
-	
-	//   for(var product of this.state.shoppingBasket){
-	//     stock.addProduct(product);
-	//   }
-	
-	//   var transaction = new Transaction({"shoppingBasket": shoppingBasket, "stock": stock});
-	
-	//   transaction.moveProductFromStockToBasket(selectedProduct, 1);
-	
-	//   // shoppingBasket.addProduct(selectedProduct);
-	
-	// },
 
 /***/ },
 /* 165 */
@@ -20350,17 +20364,19 @@
 	  },
 	
 	  removeProduct: function removeProduct(removedProduct) {
-	    for (var i = 0; i < this.basket.length; i++) {
-	      if (this.basket[i].id === removedProduct.id) {
-	        this.basket.splice(i, 1);
-	        console.log("index", i);
+	    if (this.value > 0) {
+	      for (var i = 0; i < this.basket.length; i++) {
+	        if (this.basket[i].id === removedProduct.id) {
+	          this.basket.splice(i, 1);
+	          console.log("index", i);
+	        }
 	      }
+	      if (removedProduct.salePrice) {
+	        this.value -= removedProduct.salePrice;
+	      } else {
+	        this.value -= removedProduct.price;
+	      };
 	    }
-	    if (removedProduct.salePrice) {
-	      this.value -= removedProduct.salePrice;
-	    } else {
-	      this.value -= removedProduct.price;
-	    };
 	  },
 	
 	  emptyBasket: function emptyBasket() {
@@ -37312,6 +37328,145 @@
 	});
 	
 	module.exports = Voucher;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _ = __webpack_require__(166);
+	
+	var Stock = function Stock() {
+	  this.stock = [];
+	};
+	
+	Stock.prototype = {
+	
+	  addProduct: function addProduct(product) {
+	    this.stock.push(product);
+	  },
+	
+	  checkSpecialItemPresent: function checkSpecialItemPresent(voucher) {
+	    var matchedItems = [];
+	    _.forEach(voucher.specialItems, function (specialItem) {
+	      matchedItems = _.filter(this.basket, _.matches(specialItem));
+	    }.bind(this));
+	    matchedItems = _.uniq(matchedItems);
+	    return matchedItems.length === voucher.specialItems.length;
+	  },
+	
+	  checkIfItemInStock: function checkIfItemInStock(item, quantity) {
+	    var inStock = false;
+	    _.forEach(this.stock, function (product) {
+	      if (product.productName === item.productName && product.quantityInStock >= quantity) {
+	        inStock = true;
+	      }
+	    });
+	    return inStock;
+	  },
+	
+	  countTotalItemsInStock: function countTotalItemsInStock() {
+	    var total = 0;
+	    _.forEach(this.stock, function (product) {
+	      total += product.quantityInStock;
+	    });
+	    return total;
+	  },
+	
+	  countTotalProductsInStock: function countTotalProductsInStock() {
+	    return this.stock.length;
+	  },
+	
+	  calculateTotalStockValue: function calculateTotalStockValue() {
+	    var total = 0;
+	    _.forEach(this.stock, function (product) {
+	      total += product.price * product.quantityInStock;
+	    });
+	    return total;
+	  },
+	
+	  removeItemFromStock: function removeItemFromStock(removedItem, quantity) {
+	    for (var i = 0; i < this.stock.length; i++) {
+	      if (this.stock[i].id === removedItem.id) {
+	        this.stock[i].quantityInStock -= quantity;
+	      }
+	    }
+	
+	    // if(this.checkIfItemInStock(removedItem, quantity)){
+	    //   var index = this.stock.indexOf(removedItem);
+	    //   this.stock[index].quantityInStock -= quantity;
+	    // };
+	  },
+	
+	  // removeProduct: function(removedProduct){
+	  //   for(var i = 0; i < this.basket.length; i++){
+	  //     if(this.basket[i].id === removedProduct.id){
+	  //       this.basket.splice(i, 1)
+	  //       console.log("index", i);
+	  //     }
+	  //   }
+	  //   if(removedProduct.salePrice){
+	  //     this.value -= removedProduct.salePrice
+	  //   } else {
+	  //     this.value -= removedProduct.price
+	  //   };
+	  // },
+	
+	  // removeProductFromStock: function(product, quantity){
+	  //   if(this.checkIfItemInStock(product, quantity)){
+	  //     var index = this.stock.indexOf(product);
+	  //     this.stock.splice(index, 1);
+	  //   };
+	  // },
+	
+	  filterProductsByCategory: function filterProductsByCategory(category) {
+	    return _.filter(this.stock, function (product) {
+	      return product.category === category;
+	    });
+	  },
+	  filterProductsByDepartment: function filterProductsByDepartment(department) {
+	    return _.filter(this.stock, function (product) {
+	      return product.department === department;
+	    });
+	  },
+	  filterProductsByInSale: function filterProductsByInSale() {
+	    return _.filter(this.stock, function (product) {
+	      return product.inSale === true;
+	    });
+	  },
+	  filterProductsByPrice: function filterProductsByPrice(minPrice, maxPrice) {
+	    return _.filter(this.stock, function (product) {
+	      return product.price >= minPrice && product.price <= maxPrice;
+	    });
+	  }
+	};
+	
+	module.exports = Stock;
+	
+	// -------------------
+	// additional methods
+	// -------------------
+	
+	// countTotalItemsInStockByDepartment: function(department){
+	//   var total = 0;
+	//   _.forEach(this.stock, function(product){
+	//     if(product.department === department){
+	//       total += product.quantityInStock;
+	//     }
+	//   })
+	//   return total;
+	// }
+	
+	// countTotalItemsInStockByCategory: function(category){
+	//   var total = 0;
+	//   _.forEach(this.stock, function(product){
+	//     if(product.category === category){
+	//       total += product.quantityInStock;
+	//     }
+	//   })
+	//   return total;
+	// }
 
 /***/ }
 /******/ ]);

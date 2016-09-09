@@ -19792,7 +19792,7 @@
 	      React.createElement(
 	        'h1',
 	        { className: 'main-heading' },
-	        't.r.o.v.e'
+	        ' t r o v e '
 	      ),
 	      React.createElement(Basket, { products: this.state.products }),
 	      React.createElement(BasketButton, null),
@@ -19893,6 +19893,7 @@
 	        key: key,
 	        product: product,
 	        productName: product.productName,
+	        colour: product.colour,
 	        department: product.department,
 	        category: product.category,
 	        price: product.price,
@@ -19944,6 +19945,8 @@
 	        ' |',
 	        this.props.productName,
 	        ' | ',
+	        this.props.colour,
+	        ' | ',
 	        this.props.department,
 	        ' | ',
 	        this.props.category,
@@ -19951,6 +19954,7 @@
 	        this.props.price,
 	        ' | ',
 	        this.props.quantityInStock,
+	        ' | ',
 	        React.createElement(
 	          'button',
 	          null,

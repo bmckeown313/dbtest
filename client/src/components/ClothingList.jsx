@@ -10,6 +10,7 @@ var ClothingList = React.createClass({
       key={key}
       product={product}
       productName={product.productName}
+      colour={product.colour}
       department={product.department}
       category={product.category}
       price={product.price}

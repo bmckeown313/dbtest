@@ -10,25 +10,9 @@ Stock.prototype = {
     this.stock.push(product);
   },
 
-
-  checkSpecialItemPresent: function(voucher){
-    var matchedItems = [];
-    _.forEach(voucher.specialItems, function(specialItem){
-      matchedItems = _.filter(this.basket, _.matches(specialItem));
-    }.bind(this));
-      matchedItems = _.uniq(matchedItems);
-    return (matchedItems.length === voucher.specialItems.length);
-  },
-
   checkIfItemInStock: function(item, quantity){
-    // var inStock = false;
-    // _.forEach(this.stock, function(product){
-    //   if(product.productName === item.productName && product.quantityInStock >= quantity){
-    //     inStock = true;
-    //   }
-    // })
-    // return inStock;
-    return item.quantityInStock >= quantity;
+    var index = _.findIndex(this.stock, function(product){ return product.id === item.id});
+    return (this.stock[index].quantityInStock >= quantity);
   },
 
   countTotalItemsInStock: function(){
@@ -57,28 +41,7 @@ Stock.prototype = {
         this.stock[i].quantityInStock -= quantity;
       }
     }
-
-
-    // if(this.checkIfItemInStock(removedItem, quantity)){
-    //   var index = this.stock.indexOf(removedItem);
-    //   this.stock[index].quantityInStock -= quantity;
-    // };
   },
-
-
-  // removeProduct: function(removedProduct){
-  //   for(var i = 0; i < this.basket.length; i++){
-  //     if(this.basket[i].id === removedProduct.id){
-  //       this.basket.splice(i, 1)
-  //       console.log("index", i);
-  //     }
-  //   }
-  //   if(removedProduct.salePrice){
-  //     this.value -= removedProduct.salePrice
-  //   } else {
-  //     this.value -= removedProduct.price
-  //   };
-  // },
 
   // removeProductFromStock: function(product, quantity){
   //   if(this.checkIfItemInStock(product, quantity)){

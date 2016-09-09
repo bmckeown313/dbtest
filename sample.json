@@ -1,6 +1,7 @@
 [
 
   {
+    "id": 0,
     "productName": "Almond toe, patent, court shoes",
     "colour": "Black",
     "department": "Women's",
@@ -12,6 +13,7 @@
   },
 
   {
+    "id": 1,
     "productName": "Suede shoes",
     "colour": "Blue",
     "department": "Women's",
@@ -23,6 +25,7 @@
   },
 
   {
+    "id": 2,
     "productName": "Leather, driver saddle loafers",
     "colour": "Tan",
     "department": "Men's",
@@ -34,6 +37,7 @@
   },
 
   {
+    "id": 3,
     "productName": "Flip flops",
     "colour": "Red",
     "department": "Men's",
@@ -45,6 +49,7 @@
   },
 
   {
+    "id": 4,
     "productName": "Flip flops",
     "colour": "Blue",
     "department": "Men's",
@@ -56,6 +61,7 @@
   },
 
   {
+    "id": 5,
     "productName": "Gold button cardigan",
     "colour": "Black",
     "department": "Women's",
@@ -67,6 +73,7 @@
   },
 
   {
+    "id": 6,
     "productName": "Cotton shorts",
     "colour": "Red",
     "department": "Women's",
@@ -78,6 +85,7 @@
   },
 
   {
+    "id": 7,
     "productName": "Fine stripe short sleeve shirt",
     "colour": "Grey",
     "department": "Men's",
@@ -89,6 +97,7 @@
   },
 
   {
+    "id": 8,
     "productName": "Fine stripe short sleeve shirt",
     "colour": "Green",
     "department": "Men's",
@@ -100,6 +109,7 @@
   },
 
   {
+    "id": 9,
     "productName": "Sharkskin waistcoat",
     "colour": "Charcoal",
     "department": "Men's",
@@ -111,6 +121,7 @@
   },
 
   {
+    "id": 10,
     "productName": "Lightweight, patch pocket blazer",
     "colour": "Deer",
     "department": "Men's",
@@ -122,6 +133,7 @@
   },
 
   {
+    "id": 11,
     "productName": "Bird print dress",
     "colour": "Black",
     "department": "Women's",
@@ -133,6 +145,7 @@
   },
 
   {
+    "id": 12,
     "productName": "Mid twist, cut-out dress",
     "colour": "Pink",
     "department": "Women's",

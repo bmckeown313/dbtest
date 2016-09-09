@@ -32,7 +32,8 @@ var ClothingBox = React.createClass({
     }
 
     shoppingBasket.removeProduct(selectedProduct);
-    this.setState({shoppingBasket: shoppingBasket.basket});
+    console.log("basket value in remove product", shoppingBasket.value);
+    this.setState({shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value});
   },
 
   totalBasketValue: function(){

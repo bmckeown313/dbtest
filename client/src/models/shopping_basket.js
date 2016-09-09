@@ -28,9 +28,9 @@ ShoppingBasket.prototype = {
       }
     }
     if(removedProduct.salePrice){
-      this.value += removedProduct.salePrice
+      this.value -= removedProduct.salePrice
     } else {
-      this.value += removedProduct.price
+      this.value -= removedProduct.price
     };
   },
 

@@ -27,3 +27,28 @@ var Basket = React.createClass({
 });
 
 module.exports = Basket;
+
+
+
+// addProductToBasket: function(selectedProduct){
+//   var shoppingBasket = new ShoppingBasket();
+
+//   for(var product of this.state.shoppingBasket){
+//     shoppingBasket.addProduct(new Product(product));
+//   }
+
+//   this.setState({shoppingBasket: shoppingBasket.basket});
+
+//   var stock = new Stock();
+
+//   for(var product of this.state.shoppingBasket){
+//     stock.addProduct(product);
+//   }
+
+//   var transaction = new Transaction({"shoppingBasket": shoppingBasket, "stock": stock});
+
+//   transaction.moveProductFromStockToBasket(selectedProduct, 1);
+
+//   // shoppingBasket.addProduct(selectedProduct);
+  
+// },

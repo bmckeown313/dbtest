@@ -19763,7 +19763,6 @@
 	var Product = __webpack_require__(168);
 	var Transaction = __webpack_require__(169);
 	var DiscountVoucher = __webpack_require__(171);
-	
 	var ClothingBox = React.createClass({
 	  displayName: 'ClothingBox',
 	
@@ -19801,7 +19800,8 @@
 	    }
 	
 	    shoppingBasket.addProduct(selectedProduct);
-	    this.setState({ shoppingBasket: shoppingBasket.basket });
+	    console.log("basket value in add product", shoppingBasket.value);
+	    this.setState({ shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value });
 	  },
 	
 	  removeProductFromBasket: function removeProductFromBasket(selectedProduct) {
@@ -20008,6 +20008,7 @@
 	
 	    shoppingBasket.applyDiscountVoucher(availableVoucher);
 	    console.log(shoppingBasket.value);
+	    // this.totalBasketValue();
 	    this.setState({ shoppingBasketValue: shoppingBasket.value });
 	  },
 	
@@ -20033,7 +20034,7 @@
 	        { className: 'main-heading' },
 	        ' t r o v e '
 	      ),
-	      React.createElement(Basket, { products: this.state.products, totalItemsInBasket: this.totalItemsInBasket, basket: this.state.shoppingBasket, availableVouchers: this.checkForAvailableVouchers(), applyAvailableVoucher: this.applyAvailableVoucher, totalBasketValue: this.state.shoppingBasketValue }),
+	      React.createElement(Basket, { products: this.state.products, totalBasketValue: this.state.shoppingBasketValue, totalItemsInBasket: this.totalItemsInBasket, basket: this.state.shoppingBasket, availableVouchers: this.checkForAvailableVouchers(), applyAvailableVoucher: this.applyAvailableVoucher }),
 	      React.createElement(ClothingSelect, { products: this.state.products }),
 	      React.createElement(ClothingList, { products: this.state.products, setSelectedProduct: this.setSelectedProduct, addProductToBasket: this.addProductToBasket, removeProductFromBasket: this.removeProductFromBasket })
 	    );
@@ -20295,6 +20296,29 @@
 	});
 	
 	module.exports = Basket;
+	
+	// addProductToBasket: function(selectedProduct){
+	//   var shoppingBasket = new ShoppingBasket();
+	
+	//   for(var product of this.state.shoppingBasket){
+	//     shoppingBasket.addProduct(new Product(product));
+	//   }
+	
+	//   this.setState({shoppingBasket: shoppingBasket.basket});
+	
+	//   var stock = new Stock();
+	
+	//   for(var product of this.state.shoppingBasket){
+	//     stock.addProduct(product);
+	//   }
+	
+	//   var transaction = new Transaction({"shoppingBasket": shoppingBasket, "stock": stock});
+	
+	//   transaction.moveProductFromStockToBasket(selectedProduct, 1);
+	
+	//   // shoppingBasket.addProduct(selectedProduct);
+	
+	// },
 
 /***/ },
 /* 165 */

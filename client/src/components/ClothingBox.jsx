@@ -7,7 +7,6 @@ var ShoppingBasket = require('../models/shopping_basket');
 var Product = require('../models/product');
 var Transaction = require('../models/transaction');
 var DiscountVoucher = require('../models/discount_voucher');
-
 var ClothingBox = React.createClass({
 
   getInitialState: function(){
@@ -21,7 +20,8 @@ var ClothingBox = React.createClass({
       shoppingBasket.addProduct(new Product(product));
     }
     shoppingBasket.addProduct(selectedProduct);
-    this.setState({shoppingBasket: shoppingBasket.basket});
+    console.log("basket value in add product", shoppingBasket.value);
+    this.setState({shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value});
   },
 
   removeProductFromBasket: function(selectedProduct){
@@ -101,6 +101,7 @@ var ClothingBox = React.createClass({
     }
     shoppingBasket.applyDiscountVoucher(availableVoucher);
     console.log(shoppingBasket.value);
+    // this.totalBasketValue();
     this.setState({shoppingBasketValue: shoppingBasket.value});
   },
 
@@ -121,7 +122,7 @@ var ClothingBox = React.createClass({
     return(
       <div>
         <h1 className="main-heading"> t r o v e </h1>
-        <Basket products={this.state.products} totalItemsInBasket={this.totalItemsInBasket} basket={this.state.shoppingBasket} availableVouchers={this.checkForAvailableVouchers()} applyAvailableVoucher={this.applyAvailableVoucher} totalBasketValue={this.state.shoppingBasketValue}/>
+        <Basket products={this.state.products} totalBasketValue={this.state.shoppingBasketValue} totalItemsInBasket={this.totalItemsInBasket} basket={this.state.shoppingBasket} availableVouchers={this.checkForAvailableVouchers()} applyAvailableVoucher={this.applyAvailableVoucher}/>
         <ClothingSelect products={this.state.products}/>
         <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct} addProductToBasket={this.addProductToBasket} removeProductFromBasket={this.removeProductFromBasket}/>
       </div>

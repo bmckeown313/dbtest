@@ -20060,10 +20060,10 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
 	      React.createElement(
 	        'h1',
-	        { className: 'main-heading' },
+	        { id: 'main-heading', className: 'col-12' },
 	        ' t r o v e '
 	      ),
 	      React.createElement(Basket, { products: this.state.products, totalBasketValue: this.state.shoppingBasketValue, totalItemsInBasket: this.totalItemsInBasket, basket: this.state.shoppingBasket, availableVouchers: this.checkForAvailableVouchers(), applyAvailableVoucher: this.applyAvailableVoucher }),
@@ -20143,17 +20143,13 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
 	      React.createElement(
 	        'h1',
 	        null,
-	        'The clothing list'
+	        'treasures:'
 	      ),
-	      React.createElement(
-	        'ul',
-	        null,
-	        clothingProductNodes
-	      )
+	      clothingProductNodes
 	    );
 	  }
 	
@@ -20205,12 +20201,13 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
+	      React.createElement('br', null),
+	      React.createElement('img', { src: this.props.imageUrl }),
+	      React.createElement('br', null),
 	      React.createElement(
-	        'li',
+	        'p',
 	        { key: this.props.key },
-	        React.createElement('img', { src: this.props.imageUrl }),
-	        ' |',
 	        this.props.productName,
 	        ' | ',
 	        this.props.colour,
@@ -20222,19 +20219,21 @@
 	        this.props.price,
 	        ' | ',
 	        this.props.quantityInStock,
-	        ' | ',
-	        React.createElement(
-	          'button',
-	          { className: 'add-product-button', onClick: this.handleAddClick },
-	          'add to cart'
-	        ),
-	        ' | ',
-	        React.createElement(
-	          'button',
-	          { className: 'remove-product-button', onClick: this.handleRemoveClick },
-	          'remove from cart'
-	        )
-	      )
+	        ' in stock'
+	      ),
+	      React.createElement(
+	        'button',
+	        { className: 'add-product-button', onClick: this.handleAddClick },
+	        'add to cart'
+	      ),
+	      ' ',
+	      React.createElement(
+	        'button',
+	        { className: 'remove-product-button', onClick: this.handleRemoveClick },
+	        'remove from cart'
+	      ),
+	      React.createElement('br', null),
+	      React.createElement('br', null)
 	    );
 	  }
 	
@@ -20285,18 +20284,19 @@
 	
 	
 	  render: function render() {
+	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
 	      React.createElement(
 	        'h1',
 	        null,
-	        'The basket'
+	        'my trove'
 	      ),
 	      React.createElement(
 	        'h4',
 	        null,
-	        'Total basket value:'
+	        'total trove value:'
 	      ),
 	      React.createElement(
 	        'p',
@@ -20307,19 +20307,13 @@
 	      React.createElement(
 	        'h4',
 	        null,
-	        'Total items in basket:'
+	        'total items in trove:'
 	      ),
 	      React.createElement(
 	        'p',
 	        null,
 	        this.props.totalItemsInBasket()
 	      ),
-	      React.createElement(
-	        'h4',
-	        null,
-	        'Items:'
-	      ),
-	      React.createElement('p', null),
 	      React.createElement(VoucherBox, { availableVouchers: this.props.availableVouchers, applyAvailableVoucher: this.props.applyAvailableVoucher
 	      })
 	    );
@@ -20384,7 +20378,7 @@
 	      matchedItems = _.filter(this.basket, _.matches(specialItem));
 	    }.bind(this));
 	    matchedItems = _.uniq(matchedItems);
-	    return matchedItems.length === voucher.specialItems.length;
+	    return matchedItems.length >= voucher.specialItems.length;
 	  },
 	
 	  checkEligibleDiscountValueReached: function checkEligibleDiscountValueReached(voucher) {
@@ -37237,17 +37231,13 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
 	      React.createElement(
 	        'h4',
 	        null,
-	        'Vouchers:'
+	        'vouchers:'
 	      ),
-	      React.createElement(
-	        'ul',
-	        null,
-	        availableVoucherNodes
-	      )
+	      availableVoucherNodes
 	    );
 	  }
 	
@@ -37297,9 +37287,9 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'col-12' },
 	      React.createElement(
-	        'li',
+	        'p',
 	        null,
 	        ' ',
 	        this.props.voucher.description,

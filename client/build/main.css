@@ -21,6 +21,7 @@
 [class*="col-"] {
  float: left;
  padding: 0.01em;
+ /*border: 1px solid white;*/
 }
 
 .row::after {
@@ -37,10 +38,16 @@ body{
   font-family: 'Space Mono', monospace;
 }
 
-.main-heading {
+#main-heading {
   font-family: 'Space Mono', monospace;
-  font-size: 60px;
+  font-size: 80px;
   color: #311e3e;
+  text-align: center;
+}
+
+.col-12 {
+  align: center;
+  text-align: center;
 }
 
 /*-------------------------*/

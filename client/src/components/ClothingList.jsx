@@ -23,11 +23,9 @@ var ClothingList = React.createClass({
     }.bind(this))
 
     return(
-      <div>
-        <h1>The clothing list</h1>
-        <ul>
+      <div className="col-12">
+        <h1>treasures:</h1>
           {clothingProductNodes}
-        </ul>
       </div>
     )
   }

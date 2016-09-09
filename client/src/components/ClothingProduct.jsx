@@ -33,11 +33,16 @@ var ClothingProduct = React.createClass({
 
   render: function(){
     return(
-      <div>
-        <li key={this.props.key}>
-        <img src={this.props.imageUrl}></img> | 
-          {this.props.productName} | {this.props.colour} | {this.props.department} | {this.props.category} | £{this.props.price} | {this.props.quantityInStock} | <button className="add-product-button" onClick={this.handleAddClick}>add to cart</button> | <button className="remove-product-button" onClick={this.handleRemoveClick}>remove from cart</button>
-        </li>
+      <div className="col-12">
+        <br></br>
+        <img src={this.props.imageUrl}></img>
+        <br></br>
+        <p key={this.props.key}>
+         {this.props.productName} | {this.props.colour} | {this.props.department} | {this.props.category} | £{this.props.price} | {this.props.quantityInStock} in stock
+        </p>
+        <button className="add-product-button" onClick={this.handleAddClick}>add to cart</button> <button className="remove-product-button" onClick={this.handleRemoveClick}>remove from cart</button>
+        <br></br>
+        <br></br>
       </div>
     )
   }

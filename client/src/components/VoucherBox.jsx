@@ -21,11 +21,10 @@ var VoucherBox = React.createClass({
     }.bind(this))
 
     return(
-      <div>
-        <h4>Vouchers:</h4>
-        <ul>
+
+      <div className="col-12">
+        <h4>vouchers:</h4>
           {availableVoucherNodes}
-        </ul>
       </div>
     )
   }

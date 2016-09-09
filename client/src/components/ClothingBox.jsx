@@ -130,8 +130,8 @@ var ClothingBox = React.createClass({
 
   render: function(){
     return(
-      <div>
-        <h1 className="main-heading"> t r o v e </h1>
+      <div className="col-12">
+        <h1 id="main-heading" className="col-12"> t r o v e </h1>
         <Basket products={this.state.products} totalBasketValue={this.state.shoppingBasketValue} totalItemsInBasket={this.totalItemsInBasket} basket={this.state.shoppingBasket} availableVouchers={this.checkForAvailableVouchers()} applyAvailableVoucher={this.applyAvailableVoucher}/>
         <ClothingSelect products={this.state.products}/>
         <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct} addProductToBasket={this.addProductToBasket} removeProductFromBasket={this.removeProductFromBasket}/>

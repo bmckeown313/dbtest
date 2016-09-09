@@ -16,9 +16,9 @@ var Voucher = React.createClass({
 
   render: function(){
     return(
-      <div>
-        <li> {this.props.voucher.description} <button className="add-product-button" onClick={this.handleAddClick}>apply</button>
-        </li>
+      <div className="col-12">
+        <p> {this.props.voucher.description} <button className="add-product-button" onClick={this.handleAddClick}>apply</button>
+        </p>
       </div>
     )
   }

@@ -47,7 +47,7 @@ ShoppingBasket.prototype = {
       matchedItems = _.filter(this.basket, _.matches(specialItem));
     }.bind(this));
       matchedItems = _.uniq(matchedItems);
-    return (matchedItems.length === voucher.specialItems.length);
+    return (matchedItems.length >= voucher.specialItems.length);
   },
 
   checkEligibleDiscountValueReached: function(voucher){

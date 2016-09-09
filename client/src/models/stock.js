@@ -43,12 +43,12 @@ Stock.prototype = {
     }
   },
 
-  // removeProductFromStock: function(product, quantity){
-  //   if(this.checkIfItemInStock(product, quantity)){
-  //     var index = this.stock.indexOf(product);
-  //     this.stock.splice(index, 1);
-  //   };
-  // },
+  removeProductFromStock: function(product, quantity){
+    if(this.checkIfItemInStock(product, quantity)){
+      var index = this.stock.indexOf(product);
+      this.stock.splice(index, 1);
+    };
+  },
 
   filterProductsByCategory(category){
     return _.filter(this.stock, function(product){

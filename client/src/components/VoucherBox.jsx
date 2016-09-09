@@ -23,7 +23,7 @@ var VoucherBox = React.createClass({
     return(
 
       <div className="col-12">
-        <h4>vouchers:</h4>
+        <h3>vouchers:</h3>
           {availableVoucherNodes}
       </div>
     )

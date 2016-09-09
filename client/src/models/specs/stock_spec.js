@@ -84,13 +84,13 @@ describe('Stock', function(){
     // assert.equal(stock.calculateTotalStockValue(), 297);
   });
 
-  // it('should be able to remove a product from the stock', function(){
-  //   stock.addProduct(product1);
-  //   stock.addProduct(product3);
-  //   stock.removeProductFromStock(product3, 1);
-  //   assert.equal(stock.countTotalProductsInStock(), 1);
-  //   assert.equal(stock.calculateTotalStockValue(), 495);
-  // });
+  it('should be able to remove a product from the stock', function(){
+    stock.addProduct(product1);
+    stock.addProduct(product3);
+    stock.removeProductFromStock(product3, 1);
+    assert.equal(stock.countTotalProductsInStock(), 1);
+    assert.equal(stock.calculateTotalStockValue(), 495);
+  });
 
   it('should be able to filter products by category', function(){
     stock.addProduct(product1);

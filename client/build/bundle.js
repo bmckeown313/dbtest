@@ -20149,7 +20149,7 @@
 	      React.createElement(
 	        'h1',
 	        null,
-	        'treasures:'
+	        'treasures'
 	      ),
 	      clothingProductNodes
 	    );
@@ -20289,14 +20289,14 @@
 	
 	    return React.createElement(
 	      'div',
-	      { className: 'col-12' },
+	      { className: 'col-12', id: 'basket-trove' },
 	      React.createElement(
 	        'h1',
 	        null,
 	        'my trove'
 	      ),
 	      React.createElement(
-	        'h4',
+	        'h3',
 	        null,
 	        'total trove value:'
 	      ),
@@ -20307,7 +20307,7 @@
 	        this.props.totalBasketValue
 	      ),
 	      React.createElement(
-	        'h4',
+	        'h3',
 	        null,
 	        'total items in trove:'
 	      ),
@@ -37235,7 +37235,7 @@
 	      'div',
 	      { className: 'col-12' },
 	      React.createElement(
-	        'h4',
+	        'h3',
 	        null,
 	        'vouchers:'
 	      ),
@@ -37362,12 +37362,12 @@
 	    }
 	  },
 	
-	  // removeProductFromStock: function(product, quantity){
-	  //   if(this.checkIfItemInStock(product, quantity)){
-	  //     var index = this.stock.indexOf(product);
-	  //     this.stock.splice(index, 1);
-	  //   };
-	  // },
+	  removeProductFromStock: function removeProductFromStock(product, quantity) {
+	    if (this.checkIfItemInStock(product, quantity)) {
+	      var index = this.stock.indexOf(product);
+	      this.stock.splice(index, 1);
+	    };
+	  },
 	
 	  filterProductsByCategory: function filterProductsByCategory(category) {
 	    return _.filter(this.stock, function (product) {

@@ -24,7 +24,7 @@ var ClothingList = React.createClass({
 
     return(
       <div className="col-12">
-        <h1>treasures:</h1>
+        <h1>treasures</h1>
           {clothingProductNodes}
       </div>
     )

@@ -19,25 +19,17 @@ var ClothingBox = React.createClass({
 
   addProductToBasket: function(selectedProduct){
     var shoppingBasket = new ShoppingBasket();
-
     for(var product of this.state.shoppingBasket){
       shoppingBasket.addProduct(new Product(product));
     }
-
     var stock = new Stock();
-
     for(var product of this.state.products){
       stock.addProduct(new Product(product));
     }
-
     console.log("stock pre transaction:", stock);
-
     var transaction = new Transaction({"shoppingBasket": shoppingBasket, "stock": stock});
-
     transaction.moveProductFromStockToBasket(selectedProduct, 1);
-
     console.log("basket post transaction move:", shoppingBasket.basket)
-
     this.setState({shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value});
   },
 

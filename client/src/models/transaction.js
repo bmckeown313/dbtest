@@ -19,11 +19,6 @@ Transaction.prototype = {
 module.exports = Transaction;
 
 
-// additional methods to add:
-
-// returnProductsFromBasketToStock: function(product, quantity){
-//   if(this.shoppingBasket)
-// }
 
 
 

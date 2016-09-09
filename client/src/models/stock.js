@@ -20,15 +20,15 @@ Stock.prototype = {
     return (matchedItems.length === voucher.specialItems.length);
   },
 
-
   checkIfItemInStock: function(item, quantity){
-    var inStock = false;
-    _.forEach(this.stock, function(product){
-      if(product.productName === item.productName && product.quantityInStock >= quantity){
-        inStock = true;
-      }
-    })
-    return inStock;
+    // var inStock = false;
+    // _.forEach(this.stock, function(product){
+    //   if(product.productName === item.productName && product.quantityInStock >= quantity){
+    //     inStock = true;
+    //   }
+    // })
+    // return inStock;
+    return item.quantityInStock >= quantity;
   },
 
   countTotalItemsInStock: function(){

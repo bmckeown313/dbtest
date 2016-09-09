@@ -19777,7 +19777,6 @@
 	
 	  addProductToBasket: function addProductToBasket(selectedProduct) {
 	    var shoppingBasket = new ShoppingBasket();
-	
 	    var _iteratorNormalCompletion = true;
 	    var _didIteratorError = false;
 	    var _iteratorError = undefined;
@@ -19804,7 +19803,6 @@
 	    }
 	
 	    var stock = new Stock();
-	
 	    var _iteratorNormalCompletion2 = true;
 	    var _didIteratorError2 = false;
 	    var _iteratorError2 = undefined;
@@ -19831,13 +19829,9 @@
 	    }
 	
 	    console.log("stock pre transaction:", stock);
-	
 	    var transaction = new Transaction({ "shoppingBasket": shoppingBasket, "stock": stock });
-	
 	    transaction.moveProductFromStockToBasket(selectedProduct, 1);
-	
 	    console.log("basket post transaction move:", shoppingBasket.basket);
-	
 	    this.setState({ shoppingBasket: shoppingBasket.basket, shoppingBasketValue: shoppingBasket.value });
 	  },
 	
@@ -37212,12 +37206,6 @@
 	};
 	
 	module.exports = Transaction;
-	
-	// additional methods to add:
-	
-	// returnProductsFromBasketToStock: function(product, quantity){
-	//   if(this.shoppingBasket)
-	// }
 
 /***/ },
 /* 170 */
@@ -37357,13 +37345,14 @@
 	  },
 	
 	  checkIfItemInStock: function checkIfItemInStock(item, quantity) {
-	    var inStock = false;
-	    _.forEach(this.stock, function (product) {
-	      if (product.productName === item.productName && product.quantityInStock >= quantity) {
-	        inStock = true;
-	      }
-	    });
-	    return inStock;
+	    // var inStock = false;
+	    // _.forEach(this.stock, function(product){
+	    //   if(product.productName === item.productName && product.quantityInStock >= quantity){
+	    //     inStock = true;
+	    //   }
+	    // })
+	    // return inStock;
+	    return item.quantityInStock >= quantity;
 	  },
 	
 	  countTotalItemsInStock: function countTotalItemsInStock() {

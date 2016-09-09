@@ -3,15 +3,27 @@ var ClothingSelect = require('./ClothingSelect');
 var ClothingList = require('./ClothingList');
 var BasketButton = require('./BasketButton');
 var Basket = require('./Basket');
+var ShoppingBasket = require('../models/shopping_basket');
+var Product = require('../models/product');
 
 var ClothingBox = React.createClass({
 
   getInitialState: function(){
-    return({products: [], selectedProduct: null});
+    return({products: [], selectedProduct: null, shoppingBasket: []});
   },
 
   setSelectedProduct: function(product){
     this.setState({selectedProduct: product});
+  },
+
+  addProductToBasket: function(selectedProduct){
+    var shoppingBasket = new ShoppingBasket();
+    for(var product of this.state.shoppingBasket){
+      shoppingBasket.addProduct(new Product(product));
+    }
+    shoppingBasket.addProduct(selectedProduct);
+    console.log(shoppingBasket);
+    this.setState({shoppingBasket: shoppingBasket.basket});
   },
 
   componentDidMount: function(){
@@ -34,7 +46,7 @@ var ClothingBox = React.createClass({
         <Basket products={this.state.products}/>
         <BasketButton />
         <ClothingSelect products={this.state.products}/>
-        <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct}/>
+        <ClothingList products={this.state.products} setSelectedProduct={this.setSelectedProduct} addProductToBasket={this.addProductToBasket}/>
       </div>
     )
   }

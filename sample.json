@@ -1,7 +1,8 @@
 [
 
   {
-    "productName": "Almond Toe Court Shoes, Patent Black",
+    "productName": "Almond toe, patent, court shoes",
+    "colour": "Black",
     "department": "Women's",
     "category": "Footwear",
     "price": 99.00,
@@ -11,7 +12,8 @@
   },
 
   {
-    "productName": "Suede Shoes, Blue",
+    "productName": "Suede shoes",
+    "colour": "Blue",
     "department": "Women's",
     "category": "Footwear",
     "price": 42.00,
@@ -21,7 +23,8 @@
   },
 
   {
-    "productName": "Leather Driver Saddle Loafers, Tan",
+    "productName": "Leather, driver saddle loafers",
+    "colour": "Tan",
     "department": "Men's",
     "category": "Footwear",
     "price": 34.00,
@@ -31,7 +34,8 @@
   },
 
   {
-    "productName": "Flip Flops, Red",
+    "productName": "Flip flops",
+    "colour": "Red",
     "department": "Men's",
     "category": "Footwear",
     "price": 19.00,
@@ -41,7 +45,8 @@
   },
 
   {
-    "productName": "Flip Flops, Blue",
+    "productName": "Flip flops",
+    "colour": "Blue",
     "department": "Men's",
     "category": "Footwear",
     "price": 19.00,
@@ -51,7 +56,8 @@
   },
 
   {
-    "productName": "Gold Button Cardigan, Black",
+    "productName": "Gold button cardigan",
+    "colour": "Black",
     "department": "Women's",
     "category": "Casualwear",
     "price": 167.00,
@@ -61,7 +67,8 @@
   },
 
   {
-    "productName": "Cotton Shorts, Medium Red",
+    "productName": "Cotton shorts",
+    "colour": "Red",
     "department": "Women's",
     "category": "Casualwear",
     "price": 30.00,
@@ -71,7 +78,8 @@
   },
 
   {
-    "productName": "Fine Stripe Short Sleeve Shirt, Grey",
+    "productName": "Fine stripe short sleeve shirt",
+    "colour": "Grey",
     "department": "Men's",
     "category": "Casualwear",
     "price": 49.99,
@@ -81,7 +89,8 @@
   },
 
   {
-    "productName": "Fine Stripe Short Sleeve Shirt, Green",
+    "productName": "Fine stripe short sleeve shirt",
+    "colour": "Green",
     "department": "Men's",
     "category": "Casualwear",
     "price": 49.99,
@@ -91,7 +100,8 @@
   },
 
   {
-    "productName": "Sharkskin Waistcoat, Charcoal",
+    "productName": "Sharkskin waistcoat",
+    "colour": "Charcoal",
     "department": "Men's",
     "category": "Formalwear",
     "price": 75.00,
@@ -101,7 +111,8 @@
   },
 
   {
-    "productName": "Lightweight Patch Pocket Blazer, Deer",
+    "productName": "Lightweight, patch pocket blazer",
+    "colour": "Deer",
     "department": "Men's",
     "category": "Formalwear",
     "price": 175.50,
@@ -111,7 +122,8 @@
   },
 
   {
-    "productName": "Bird Print Dress, Black",
+    "productName": "Bird print dress",
+    "colour": "Black",
     "department": "Women's",
     "category": "Formalwear",
     "price": 270.00,
@@ -121,7 +133,8 @@
   },
 
   {
-    "productName": "Mid Twist Cut-Out Dress, Pink",
+    "productName": "Mid twist, cut-out dress",
+    "colour": "Pink",
     "department": "Women's",
     "category": "Formalwear",
     "price": 540.00,

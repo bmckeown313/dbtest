@@ -16,8 +16,9 @@ var ClothingList = React.createClass({
       price={product.price}
       quantityInStock={product.quantityInStock}
       imageUrl={product.imageUrl}
+      addProductToBasket={this.props.addProductToBasket}
       />
-    })
+    }.bind(this))
 
     return(
       <div>
